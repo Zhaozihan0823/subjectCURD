@@ -23,6 +23,10 @@ public class SubjectDao {
 		return Dao.query("select * from student", Student.class);
 	}
 	
+	public Student getStudentbyID(int stuID) {
+		return Dao.queryOne("select * from student where stuID=?", Student.class, stuID);
+	}
+	
 	public Sub getSubbyclassno(Integer classno) {
 		return Dao.queryOne("select * from sub where classno=?", Sub.class, classno);
 	}
@@ -43,7 +47,7 @@ public class SubjectDao {
 	}
 	
 	//ÐÞ¸Ä
-	public void update(Student stu) {
-		Dao.executeSql("update student set score=? where stuID=?", stu.getScore(), stu.getStuID());
+	public void update(int stuID, int score) {
+		Dao.executeSql("update student set score=? where stuID=?", score, stuID);
 	}
 }

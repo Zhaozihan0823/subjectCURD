@@ -7,11 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="updateServlet" method="get">
-		stuID:<input type="text" name="stuID" hidden>
-		stuname:<input type="text" name="stuname" >
-		classname:<input type="text" name="classname" >
-		
+	<form action="../updateServlet" method="post">
+		stuID:<span>${stu.stuID }</span><br/>
+		stuname:<span>${stu.stuname }</span><br/>
+		classname:<span>${stu.classname }</span><br/>
+		score:<input type="text" name="score" value="${stu.score }"><br/>
+		<input type="submit" value="修改" ><br/>
 	</form>
 
 </body>

@@ -1,6 +1,8 @@
 package subject.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import subject.dao.SubjectDao;
-import subject.vo.Student;
+import subject.vo.Sub;
 
 /**
- * Servlet implementation class updateServlet
+ * Servlet implementation class claselectServlet
  */
-@WebServlet("/updateServlet")
-public class updateServlet extends HttpServlet {
+@WebServlet("/claselectServlet")
+public class claselectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateServlet() {
+    public claselectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,15 +31,12 @@ public class updateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int stuID = Integer.valueOf(request.getParameter("stuID"));
-		int score = Integer.valueOf(request.getParameter("score"));
-		
 		SubjectDao dao = new SubjectDao();
-		dao.update(stuID, score);
+		List<Sub> sub = dao.getAllClass();
 		
-		response.sendRedirect("SubjectServlet");
+		request.setAttribute("sub", sub);
 		
+		request.getRequestDispatcher("/subject/viewClass.jsp").forward(request, response);
 	}
 
 	/**

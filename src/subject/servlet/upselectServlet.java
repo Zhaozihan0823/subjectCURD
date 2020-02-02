@@ -11,16 +11,16 @@ import subject.dao.SubjectDao;
 import subject.vo.Student;
 
 /**
- * Servlet implementation class updateServlet
+ * Servlet implementation class upselectServlet
  */
-@WebServlet("/updateServlet")
-public class updateServlet extends HttpServlet {
+@WebServlet("/upselectServlet")
+public class upselectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateServlet() {
+    public upselectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,15 +29,14 @@ public class updateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		int stuID = Integer.valueOf(request.getParameter("stuID"));
-		int score = Integer.valueOf(request.getParameter("score"));
 		
 		SubjectDao dao = new SubjectDao();
-		dao.update(stuID, score);
+		Student stu = new Student();
+		stu=dao.getStudentbyID(stuID);
 		
-		response.sendRedirect("SubjectServlet");
-		
+		request.setAttribute("stu", stu);
+		request.getRequestDispatcher("/subjectviewUpdate.jsp").forward(request, response);
 	}
 
 	/**

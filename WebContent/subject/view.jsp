@@ -33,6 +33,9 @@
 		$("#btn_insert").click(function(){
 			window.open("viewInsertServlet", "_self");	
 			});
+		$("#btn_select").click(function(){
+			window.open("claselectServlet","_self")
+			});
 		})
 				
 
@@ -42,7 +45,7 @@
 <body>
 	<form action="deleteServlet" method="post">
 	<table border="1" style="text-align: center" width=100%>
-	<caption>腿腿学生课程管理列表</caption>
+	<caption>学生课程管理列表</caption>
 	<tr>
 	<td><input type="checkbox" name="stuIDs" id="stuIDs"></td>
 	<td>序号</td>
@@ -67,13 +70,14 @@
 	<td>${s[4] }</td>
 	<td>${s[5] }</td>
 	<td>${s[6] }</td>
-	<td><a href="">修改</a></td>
+	<td><a href="/subject/viewUpdate.jsp?stuID=${s.[0]}">修改</a></td>
 	</tr>
 	</c:forEach>
 	
 	</table>
 	<input type="button" value="删除" id="btn_del">
 	<input type="button" value="添加" id="btn_insert">
+	<input type="button" value="查询开课课程信息" id="btn_select">
 	</form>
 
 </body>
