@@ -42,7 +42,7 @@
 <body>
 	<form action="deleteServlet" method="post">
 	<table border="1" style="text-align: center" width=100%>
-	<caption>学生课程管理列表</caption>
+	<caption>腿腿学生课程管理列表</caption>
 	<tr>
 	<td><input type="checkbox" name="stuIDs" id="stuIDs"></td>
 	<td>序号</td>
