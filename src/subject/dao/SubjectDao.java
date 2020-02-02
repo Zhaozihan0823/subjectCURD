@@ -35,9 +35,15 @@ public class SubjectDao {
 		str=str.replace("]", ")");
 		
 		Dao.executeSql("delete from student where stuID in"+ str);
-		}
+	}
+	
 	//Ôö¼Ó
-	public Student insert(Student stu) {
-		return Dao.queryOne("insert into student values(?,?,?,?)", Student.class, stu.getStuID(), stu.getStuname(), stu.getClassname(), stu.getScore());
+	public void insert(Student stu) {
+		Dao.executeSql("insert into student values(?,?,?,?)", stu.getStuID(), stu.getStuname(), stu.getClassname(), stu.getScore());
+	}
+	
+	//ÐÞ¸Ä
+	public void update(Student stu) {
+		Dao.executeSql("update student set score=? where stuID=?", stu.getScore(), stu.getStuID());
 	}
 }

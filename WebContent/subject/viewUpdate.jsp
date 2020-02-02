@@ -7,7 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<form action="updateServlet" method="get">
+		stuID:<input type="text" name="stuID" hidden>
+		stuname:<input type="text" name="stuname" >
+		classname:<input type="text" name="classname" >
+		
+	</form>
 
 </body>
 </html>

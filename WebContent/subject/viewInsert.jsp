@@ -12,7 +12,7 @@
 	stuID:<input type="text" name="stuID"><br/>
 	stuname:<input type="text" name="stuname"><br/>
 	classname
-	<select>
+	<select name="classname">
 		<c:forEach var="s" items="${sub }">
 			<option value="${s.classname }">${s.classname }</option>
 		</c:forEach>
