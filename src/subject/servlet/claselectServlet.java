@@ -33,7 +33,7 @@ public class claselectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SubjectDao dao = new SubjectDao();
 		List<Sub> sub = dao.getAllClass();
-		
+		System.out.println(sub.toString());
 		request.setAttribute("sub", sub);
 		
 		request.getRequestDispatcher("/subject/viewClass.jsp").forward(request, response);

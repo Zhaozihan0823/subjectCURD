@@ -36,7 +36,7 @@ public class upselectServlet extends HttpServlet {
 		stu=dao.getStudentbyID(stuID);
 		
 		request.setAttribute("stu", stu);
-		request.getRequestDispatcher("/subjectviewUpdate.jsp").forward(request, response);
+		request.getRequestDispatcher("/subject/viewUpdate.jsp").forward(request, response);
 	}
 
 	/**

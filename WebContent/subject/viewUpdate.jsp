@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="../updateServlet" method="post">
+	<form action="updateServlet" method="post">
+		<input hidden name="stuID" value="${stu.stuID }">
 		stuID:<span>${stu.stuID }</span><br/>
 		stuname:<span>${stu.stuname }</span><br/>
 		classname:<span>${stu.classname }</span><br/>

@@ -12,7 +12,7 @@ public class SubjectDao {
 	
 	//≤È—Ø
 	public List<Object[]> getAll(){
-		return Dao.query("select stuID,stuname,classno,sub.classname,score,clabegain,teacher from sub,student where sub.classname=student.classname order by stuID");
+		return Dao.query("select stuID,stuname,classno,sub.classname,score,begaindate,teacher from sub,student where sub.classname=student.classname order by stuID");
 	}
 	
 	public List<Sub> getAllClass() {

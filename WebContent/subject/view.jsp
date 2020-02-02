@@ -70,7 +70,7 @@
 	<td>${s[4] }</td>
 	<td>${s[5] }</td>
 	<td>${s[6] }</td>
-	<td><a href="/subject/viewUpdate.jsp?stuID=${s.[0]}">修改</a></td>
+	<td><a href="upselectServlet?stuID=${s[0] }">修改</a></td>
 	</tr>
 	</c:forEach>
 	
