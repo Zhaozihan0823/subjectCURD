@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import subject.dao.SubjectDao;
+import subject.vo.Student;
 
 /**
  * Servlet implementation class updateServlet
