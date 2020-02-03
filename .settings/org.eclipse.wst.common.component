@@ -2,7 +2,7 @@
     <wb-module deploy-name="subjectCURD">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="java-output-path" value="/subjectCURD/build/classes"/>
         <property name="context-root" value="subjectCURD"/>
+        <property name="java-output-path" value="/subjectCURD/build/classes"/>
     </wb-module>
 </project-modules>
