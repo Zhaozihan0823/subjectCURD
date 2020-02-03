@@ -33,25 +33,36 @@ public class signinServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		response.setContentType("text/html; charset = UTF-8");
+		
 		String stuID = request.getParameter("stuID");
 		String password = request.getParameter("password");
 		
 		StuserDao dao=new StuserDao();
 		//只查询有没有id
-		
 		Stuser stuser = dao.getUser(Integer.valueOf(stuID), password);
-		if(stuser!=null) {
-			request.getSession().setAttribute("user",  stuser);
-			dao.StuserLogin(stuser.getStuID());
-			response.sendRedirect("SubjectServlet");
+		if(dao.getstuID(Integer.valueOf(stuID))) {
+			//判断密码是否正确
+			if(password == stuser.getPassword()) {
+				request.getSession().setAttribute("user",  stuser);
+				//更改登陆次数和登陆时间
+				dao.StuserLogin(stuser.getStuID());
+				//页面跳转
+				response.sendRedirect("SubjectServlet");
+			}else {
+				//提醒密码错误请重新输入
+				PrintWriter pw = response.getWriter();
+				pw.println("账号或密码错误请重新登录！");
+				pw.flush();
+				pw.close();
+			}
+//			RequestDispatcher rd=request.getRequestDispatcher("/subject/sign-up-in.jsp");
+//			rd.forward(request, response);
 		}else {
-			response.setContentType("text/html; charset = UTF-8");
 			PrintWriter pw = response.getWriter();
 			pw.println("此账号未注册，请先注册");
 			pw.flush();
 			pw.close();
-//			RequestDispatcher rd=request.getRequestDispatcher("/subject/sign-up-in.jsp");
-//			rd.forward(request, response);
 		}
 	}
 
