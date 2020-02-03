@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import subject.dao.StuserDao;
+import subject.vo.Stuser;
 
 /**
  * Servlet implementation class signinServlet
@@ -32,11 +33,14 @@ public class signinServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int stuID = Integer.valueOf(request.getParameter("stuID"));
+		String stuID = request.getParameter("stuID");
 		String password = request.getParameter("password");
 		
 		StuserDao dao=new StuserDao();
-		if(dao.getUser(stuID, password)!=null) {
+		Stuser stuser = dao.getUser(Integer.valueOf(stuID), password);
+		if(stuser!=null) {
+			request.getSession().setAttribute(stuID,  password);
+			dao.StuserLogin(stuser.getStuID());
 			response.sendRedirect("SubjectServlet");
 		}else {
 			response.setContentType("text/html; charset = UTF-8");
