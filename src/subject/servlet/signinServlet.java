@@ -37,9 +37,11 @@ public class signinServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		StuserDao dao=new StuserDao();
+		//只查询有没有id
+		
 		Stuser stuser = dao.getUser(Integer.valueOf(stuID), password);
 		if(stuser!=null) {
-			request.getSession().setAttribute(stuID,  password);
+			request.getSession().setAttribute("user",  stuser);
 			dao.StuserLogin(stuser.getStuID());
 			response.sendRedirect("SubjectServlet");
 		}else {
