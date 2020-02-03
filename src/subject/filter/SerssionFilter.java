@@ -66,6 +66,7 @@ public class SerssionFilter implements Filter {
 		// TODO Auto-generated method stub
 		list.add("/subject/sign-up-in.jsp");
 		list.add("/signinServlet");
+		list.add("/signupServlet");
 	}
 
 }

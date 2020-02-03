@@ -6,13 +6,8 @@ import subject.vo.Stuser;
 
 public class StuserDao {
 	
-	public boolean getstuID(int stuID) {
-		if(Dao.queryOne("select * from stuser where stuID = ?", stuID) != null) {
-			return true;
-		}	
-		else {
-			return false;
-		}
+	public Stuser getstuID(int stuID) {
+		return Dao.queryOne("select * from stuser where stuID = ?", Stuser.class, stuID);
 	}
 	
 	public Stuser getUser(int stuID, String password) {

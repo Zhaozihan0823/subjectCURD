@@ -38,8 +38,9 @@ public class signupServlet extends HttpServlet {
 		
 		//调用业务逻辑
 		StuserDao dao = new StuserDao();
-		
-		if(dao.getUser(Integer.valueOf(stuID), password)!=null) {
+		Stuser stuser = dao.getstuID(Integer.valueOf(stuID));
+		System.out.println(stuser.toString());
+		if(stuser!=null) {
 			response.setContentType("text/html; charset = UTF-8");
 			PrintWriter pw = response.getWriter();
 			pw.println("此账号已注册，请直接登陆");

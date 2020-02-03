@@ -39,11 +39,11 @@ public class signinServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		StuserDao dao=new StuserDao();
+		Stuser stuser = dao.getstuID(Integer.valueOf(stuID));
 		//只查询有没有id
-		Stuser stuser = dao.getUser(Integer.valueOf(stuID), password);
-		if(dao.getstuID(Integer.valueOf(stuID))) {
+		if(stuser!=null) {
 			//判断密码是否正确
-			if(password == stuser.getPassword()) {
+			if(password.equals( stuser.getPassword())) {
 				request.getSession().setAttribute("user",  stuser);
 				//更改登陆次数和登陆时间
 				dao.StuserLogin(stuser.getStuID());
